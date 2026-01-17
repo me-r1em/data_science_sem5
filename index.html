@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Université de Biskra</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: white;
+            margin: 0;
+            padding: 10px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .header {
+            background: teal;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            border-radius: 5px 5px 0 0;
+        }
+        .semestre {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .semestre-icon {
+            background: teal;
+            color: white;
+            border-radius: 50%;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .item span {
+            flex: 1;
+        }
+        .type {
+            background: #ffe0b2;
+            color: #ff5722;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        .score-input {
+            background: #e0f2f1;
+            color: teal;
+            border-radius: 20px;
+            padding: 5px 10px;
+            width: 60px;
+            text-align: center;
+            border: none;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            color: teal;
+        }
+        .year-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .year-button {
+            background: #e0f2f1;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .current-year {
+            background: teal;
+            color: white;
+        }
+        .decision, .annual {
+            background: #e0f2f1;
+            color: teal;
+            padding: 10px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .semester-header {
+            background: green;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0 10px;
+            text-align: left;
+        }
+        #calculate-btn {
+            background: teal;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Assessment</div>
+        <div class="semestre">
+            <div class="semestre-icon">&#x1F393;</div>
+            Semestre 05
+        </div>
+        <div class="item">
+            <span>Compilation</span>
+            <div class="type">TP</div>
+            <input class="score-input" type="number" step="0.25" min="0" max="20" id="comp_tp">
+        </div>
+        <div class="item">
+            <span>Réseaux Avancés</span>
+            <div class="type">TP</div>
+            <input class="score-input" type="number" step="0.25" min="0" max="20" id="res_tp1">
+        </div>
+        <div class="item">
+            <span>Génie Logiciel</span>
+            <div class="type">TD</div>
+            <input class="score-input" type="number" step="0.25" min="0" max="20" id="gl_td">
+        </div>
+        <div class="item">
+            <span>Compilation</span>
+            <div class="type">TD</div>
+            <input class="score-input" type="number" step="0.25" min="0" max="20" id="comp_td">
+        </div>
+        <div class="item">
+            <span>Fondement des sciences des données</span>
+            <div class="type">TP</div>
+            <input class="score-input" type="number" step="0.25" min="0" max="20" id="fsd_tp">
+        </div>
+        <div class="item">
+            <span>Réseaux Avancés</span>
+            <div class="type">TP</div>
+            <input class="score-input" type="number" step="0.25" min="0" max="20" id="res_tp2">
+        </div>
+        <div class="item">
+            <span>Analyse des données</span>
+            <div class="type">TP</div>
+            <input class="score-input" type="number" step="0.25" min="0" max="20" id="ad_tp">
+        </div>
+        <div class="item">
+            <span>Analyse des données</span>
+            <div class="type">TD</div>
+            <input class="score-input" type="number" step="0.25" min="0" max="20" id="ad_td">
+        </div>
+        <div class="item">
+            <span>Programmation Avancée</span>
+            <div class="type">TP</div>
+            <input class="score-input" type="number" step="0.25" min="0" max="20" id="pa_tp">
+        </div>
+        <div class="item">
+            <span>Les Fondements de l'Intelligence Artificielle</span>
+            <div class="type">TP</div>
+            <input class="score-input" type="number" step="0.25" min="0" max="20" id="ai_tp">
+        </div>
+        <div class="item">
+            <span>Les Fondements de l'Intelligence Artificielle</span>
+            <div class="type">TD</div>
+            <input class="score-input" type="number" step="0.25" min="0" max="20" id="ai_td">
+        </div>
+
+        <div class="header" style="margin-top: 30px;">Exam Grades</div>
+        <div class="semestre">
+            Semestre 05
+        </div>
+        <table>
+            <tr><th>Module</th><th>Coef</th><th>Grade</th></tr>
+            <tr><td>Compilation</td><td>3</td><td><input class="score-input" type="number" step="0.25" min="0" max="20" id="comp_exam"></td></tr>
+            <tr><td>Programmation Avancée</td><td>3</td><td><input class="score-input" type="number" step="0.25" min="0" max="20" id="pa_exam"></td></tr>
+            <tr><td>Réseaux Avancés</td><td>3</td><td><input class="score-input" type="number" step="0.25" min="0" max="20" id="res_exam"></td></tr>
+            <tr><td>Analyse des données</td><td>3</td><td><input class="score-input" type="number" step="0.25" min="0" max="20" id="ad_exam"></td></tr>
+            <tr><td>Les Fondements de l'Intelligence Artificielle</td><td>3</td><td><input class="score-input" type="number" step="0.25" min="0" max="20" id="ai_exam"></td></tr>
+            <tr><td>Fondement des sciences des données</td><td>2</td><td><input class="score-input" type="number" step="0.25" min="0" max="20" id="fsd_exam"></td></tr>
+            <tr><td>Management de l'Innovation</td><td>1</td><td><input class="score-input" type="number" step="0.25" min="0" max="20" id="man_exam"></td></tr>
+            <tr><td>Génie Logiciel</td><td>2</td><td><input class="score-input" type="number" step="0.25" min="0" max="20" id="gl_exam"></td></tr>
+        </table>
+
+        <button id="calculate-btn" onclick="calculate()">Calculate</button>
+
+        <div id="transcript-section" style="display: none;">
+            <div class="header">Academic transcripts</div>
+            <div class="year-buttons">
+                <button class="year-button current-year">2025/2026</button>
+                <button class="year-button">2024/2025</button>
+                <button class="year-button">2023/2024</button>
+            </div>
+            <div class="decision">Decision : Admis(e) (session normale)</div>
+            <div class="annual">Annual average : <span id="annual_avg"></span> Credits : 30</div>
+            <div class="semester-header">Ingénieur 3ème Année<br>Average Semestre 05 : <span id="s5_avg"></span> Credit : 30</div>
+            <table id="module_table">
+                <tr><th>Module</th><th>Credit</th><th>Coef</th><th>Average</th></tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const modules = [
+                {name: "Compilation", credit: 5, coef: 3, cont_ids: ["comp_tp", "comp_td"], exam_id: "comp_exam", has_cont: true},
+                {name: "Programmation Avancée", credit: 4, coef: 3, cont_ids: ["pa_tp"], exam_id: "pa_exam", has_cont: true},
+                {name: "Réseaux Avancés", credit: 4, coef: 3, cont_ids: ["res_tp1", "res_tp2"], exam_id: "res_exam", has_cont: true},
+                {name: "Analyse des données", credit: 5, coef: 3, cont_ids: ["ad_tp", "ad_td"], exam_id: "ad_exam", has_cont: true},
+                {name: "Les Fondements de l'Intelligence Artificielle", credit: 4, coef: 3, cont_ids: ["ai_tp", "ai_td"], exam_id: "ai_exam", has_cont: true},
+                {name: "Fondement des sciences des données", credit: 3, coef: 2, cont_ids: ["fsd_tp"], exam_id: "fsd_exam", has_cont: true},
+                {name: "Management de l'Innovation", credit: 2, coef: 1, cont_ids: [], exam_id: "man_exam", has_cont: false},
+                {name: "Génie Logiciel", credit: 3, coef: 2, cont_ids: ["gl_td"], exam_id: "gl_exam", has_cont: true},
+            ];
+
+            let sum_weighted = 0;
+            let sum_coef = 0;
+            let table = document.getElementById("module_table");
+            table.innerHTML = "<tr><th>Module</th><th>Credit</th><th>Coef</th><th>Average</th></tr>";
+
+            modules.forEach(mod => {
+                let cont_grades = mod.cont_ids.map(id => {
+                    let val = document.getElementById(id).value;
+                    return val ? parseFloat(val) : NaN;
+                }).filter(g => !isNaN(g));
+
+                let cont_avg = cont_grades.length > 0 ? cont_grades.reduce((a, b) => a + b, 0) / cont_grades.length : 0;
+                let exam = parseFloat(document.getElementById(mod.exam_id).value) || 0;
+                let avg = mod.has_cont ? (0.4 * cont_avg + 0.6 * exam) : exam;
+                let avg_fixed = avg.toFixed(2);
+
+                sum_weighted += avg * mod.coef;
+                sum_coef += mod.coef;
+
+                let row = table.insertRow();
+                row.innerHTML = `<td>${mod.name}</td><td>${mod.credit}</td><td>${mod.coef}</td><td>${avg_fixed}</td>`;
+            });
+
+            let semester_avg = (sum_weighted / sum_coef).toFixed(2);
+            document.getElementById("s5_avg").innerText = semester_avg;
+            document.getElementById("annual_avg").innerText = semester_avg;
+            document.getElementById("transcript-section").style.display = "block";
+        }
+    </script>
+</body>
+</html>
